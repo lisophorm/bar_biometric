@@ -6,6 +6,7 @@
 .project
 .metadata
 bin/
+_notes/
 tmp/
 *.tmp
 *.bak
@@ -15,6 +16,7 @@ local.properties
 .classpath
 .settings/
 .loadpath
+dwsync.xml
 
 # External tool builders
 .externalToolBuilders/

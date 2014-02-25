@@ -88,6 +88,24 @@ function statusSend(status) {
 	return false;
 }
 
+function errorSend(status) {
+	try {
+		var message = {};
+		message.command = "MESSAGE";
+
+		message.code = "500";
+		message.data = "{'code':'500','msg':':'" + status + "'}";
+		
+		console.log(theTime()+" " + message.data);
+		socket.send(JSON.stringify(message));
+	} catch(exception) {
+		console.log(theTime()+"Error: " + exception);
+		$("#lasterror").html("Error: " + exception);
+	}
+	return false;
+}
+
+
 function idSend(id) {
 	try {
 		var message = {};
@@ -168,6 +186,8 @@ function theTime() {
 
 <script language="vbScript">
 
+	BioPlugInActX.SuppressErrorMessages
+
 	Dim intCaptStarted
 	
 	intCaptStarted = 0
@@ -181,6 +201,11 @@ function theTime() {
 
 		form_login.status.value = BioPlugInActX.result
 		idSend(BioPlugInActX.result)
+
+		If BioPlugInActX.GetLastError = "0" Then
+		Else
+		errorSend(BioPluginActX.GetErrorDetails)
+		End If
 		
 		intCaptStarted = 0
 

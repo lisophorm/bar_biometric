@@ -44,6 +44,11 @@ function socketMessageHandler(msg) {
 		$("#id").val(decoded.data.substr(decoded.data.indexOf(" ") + 1));
     	StartCapture()
 	}
+	if (decoded.data.substring(0, 6) == "delete") {
+		$("#id").val(decoded.data.substr(decoded.data.indexOf(" ") + 1));
+    	StartDelete()
+	}
+
 	if (decoded.data == "cancel") {
     	CancelAll()
     	$("#id").val("");
@@ -122,6 +127,11 @@ function statusSend(status) {
 			message.code = "400";
 			message.data = "{'code':'400','msg':'Registration cancelled'}";
 		}
+		if(status == 600) {
+			message.code = "600";
+			message.data = "{'code':'600','msg':'Fingerprint deleted'}";
+		}
+
 		console.log(theTime()+" " + message.code);
 		socket.send(JSON.stringify(message));
 	} catch(exception) {
@@ -200,6 +210,8 @@ function theTime() {
 </OBJECT>
 
 <script language="vbScript">
+
+	BioPlugInActX.SuppressErrorMessages
 
 	BioPlugInActX.StopActiveIdentification
 
@@ -299,6 +311,21 @@ function theTime() {
 		console.log(theTime() + "Register started")
 		
 	end sub
+
+	sub StartDelete
+	
+		BioPlugInActX.CancelRegistrationRequest
+		BioPlugInActX.StopActiveIdentification
+	
+		BioPlugInActX.DeletePrint form_enroll.id.value
+		
+		console.log(theTime() + "Fingerprint deleted")
+
+		form_enroll.status.value = "600 - Fingerprint deleted"
+		statusSend(600)
+		
+	end sub
+
 	
 	sub CancelAll
 	

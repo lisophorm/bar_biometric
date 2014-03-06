@@ -219,4 +219,5 @@ pip-log.txt
 # Exclude Dreamweaver _notes directories
 # and Creative Cloud sync files.
 */_notes
+*/_notes/
 _notes/*.dwsync

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=10">
-<title>Biometric Test</title>
+<title>REGISTER</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="json2.js"></script>
 <script type="text/javascript" src="jquery.js"></script>
@@ -157,16 +157,17 @@ function theTime() {
 
 <form name="form_enroll" action="" method="post" class="pure-form pure-form-stacked">
 
-	<div class="pure-control-group">
-		<input type="text" name="id" id="id" title="ID" class="pure-input-1" />
-	</div>
+	<!--div class="pure-control-group"-->
+		<input type="text" name="id" id="id" title="ID" class="pure-input-1" style="border:1px solid #000000" />
+	<!--/div-->
 	
 	<div class="pure-control-group">
 		<input type="text" name="status" id="status" title="Status" class="pure-input-1" readonly />
 	</div>
 	
 	<div class="pure-control-group">
-		<button type="button" id="confirmed" name="submit_cmd" class="pure-button pure-button-primary" OnClick="StartCapture()">Register</button>
+		<button type="button" id="confirmed" name="submit_cmd" class="pure-button pure-button-primary" OnClick="StartCapture()">Register</button> 
+        <button type="button" id="deletebut" name="delete_cmd" class="pure-button pure-button-primary" OnClick="StartDelete()">Delete</button>
 	</div>
 
 </form>

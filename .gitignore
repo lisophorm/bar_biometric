@@ -6,7 +6,7 @@
 .project
 .metadata
 bin/
-_notes/
+[_]notes/
 tmp/
 *.tmp
 *.bak
@@ -215,3 +215,8 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+# Exclude Dreamweaver _notes directories
+# and Creative Cloud sync files.
+*/_notes
+_notes/*.dwsync
